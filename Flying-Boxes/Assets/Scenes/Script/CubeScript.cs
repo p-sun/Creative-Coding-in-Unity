@@ -8,10 +8,9 @@ public class CubeScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
-        this.transform.position = new Vector3(0f, 5f, 0f);
-        this.transform.localScale = new Vector3(2f, 2f, 2f);
 
+        this.transform.position = new Vector3(0.0f, 5.0f, 3.0f);
+        SetScale(2);
         spinSpeed = new Vector3(Random.value, Random.value, Random.value);
 	}
 	
@@ -20,4 +19,8 @@ public class CubeScript : MonoBehaviour {
         
         this.transform.Rotate(spinSpeed);
 	}
+    public void SetScale(float size) {
+        
+        this.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+    }
 }
