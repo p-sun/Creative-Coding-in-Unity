@@ -6,13 +6,21 @@ public class Sketch : MonoBehaviour {
 
     public GameObject spinCube;
 
-	void Start () {
+    void Start() {
 
-        // Create a new cube, set its initial position, rotation, and scale.
-        GameObject newCube = Instantiate(spinCube, new Vector3(3, 5, 0), Quaternion.identity);
+        for (int i = 0; i < 3; i++) {
 
-        Instantiate(spinCube, new Vector3(3, 5, 0), Quaternion.identity);
-        newCube.GetComponent<CubeScript>().SetScale(3.0f);
+            // Position
+            float x = 3.0f;
+            float y = 5.0f;
+            float z = 0.0f;
+
+            // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
+            GameObject newCube = Instantiate(spinCube, new Vector3(x, y, z), Quaternion.identity);
+            CubeScript cubeScript = newCube.GetComponent<CubeScript>();
+            cubeScript.SetScale(3.0f);
+            cubeScript.rotateAroundSpeed = Random.value;
+        }
 	}
 	
 	void Update () {
