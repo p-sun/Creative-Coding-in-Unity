@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class CubeScript : MonoBehaviour {
 
-    Vector3 spinSpeed = Vector3.zero;
+    public float rotateAroundSpeed = 1.0f; // Rotation speed around the spin axis
+    public Vector3 spinSpeed = Vector3.zero; // Rotation speed in its local system
+
+    Vector3 spinAxis = Vector3.up;
 
 	// Use this for initialization
 	void Start () {
 
-        this.transform.position = new Vector3(0.0f, 5.0f, 3.0f);
-        SetScale(2);
         spinSpeed = new Vector3(Random.value, Random.value, Random.value);
+
+        float randomVal = Random.value - Random.value; // A number from -1 to 1, inclusive
+        spinAxis.x = randomVal * .1f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         
         this.transform.Rotate(spinSpeed);
-        this.transform.RotateAround(Vector3.zero, Vector3.up, 1.0f);
+        this.transform.RotateAround(Vector3.zero, spinAxis, rotateAroundSpeed);
 	}
 
     public void SetScale(float size) {
