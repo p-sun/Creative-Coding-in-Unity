@@ -38,8 +38,13 @@ public class Sketch : MonoBehaviour {
             float percentage = i / (float)totalCubes; // increases as i increases
             float inversePercentage = 1.0f - percentage; // decreases as i increases
 
+            // Sin in the first 90 degrees of the circle to calculate curveEaseOut
+            // Which is a number from 0 to 1, that quickly increases at first, then slows down.
+            // This makes the distance between the first cubes longer than the distance between the last cubes.
+            float curveEaseOut = Mathf.Sin(percentage * Mathf.PI / 2);
+
             // Positions
-            float x = percentage * totalDistance;
+            float x = curveEaseOut * totalDistance;
             float y = 3.0f;
             float z = 0.0f;
 
