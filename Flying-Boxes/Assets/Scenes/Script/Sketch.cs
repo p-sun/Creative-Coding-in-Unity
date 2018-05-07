@@ -11,7 +11,7 @@ public class Sketch : MonoBehaviour {
         int totalCubes = 8;
 
         // The distance between the position of the first and last cube
-        int totalDistance = 5;
+        float totalDistance = 4.8f;
 
         // LINEAR DISTRIBUTION
         for (int i = 0; i < totalCubes; i++) {
@@ -28,7 +28,7 @@ public class Sketch : MonoBehaviour {
             GameObject newCube = Instantiate(spinCube, new Vector3(x, y, z), Quaternion.identity);
             CubeScript cubeScript = newCube.GetComponent<CubeScript>();
             cubeScript.SetScale(inversePercentage);
-            cubeScript.rotateAroundSpeed = 0;
+            cubeScript.rotateAroundSpeed = percentage;
         }
 
         // SIN DISTRIBUTION
@@ -36,7 +36,6 @@ public class Sketch : MonoBehaviour {
         {
 
             float percentage = i / (float)totalCubes; // increases as i increases
-            float inversePercentage = 1.0f - percentage; // decreases as i increases
 
             // Sin in the first 90 degrees of the circle to calculate curveEaseOut
             // Which is a number from 0 to 1, that quickly increases at first, then slows down.
@@ -51,8 +50,8 @@ public class Sketch : MonoBehaviour {
             // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
             GameObject newCube = Instantiate(spinCube, new Vector3(x, y, z), Quaternion.identity);
             CubeScript cubeScript = newCube.GetComponent<CubeScript>();
-            cubeScript.SetScale(inversePercentage);
-            cubeScript.rotateAroundSpeed = 0;
+            cubeScript.SetScale(1.0f - percentage);
+            cubeScript.rotateAroundSpeed = curveEaseOut;
         }
 	}
 	
