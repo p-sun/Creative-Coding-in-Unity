@@ -8,6 +8,8 @@ public class Sketch : MonoBehaviour {
 
     void Start() {
 
+        createCentralCube();
+
         int totalCubes = 30;
 
         // The distance between the position of the first and last cube
@@ -29,15 +31,29 @@ public class Sketch : MonoBehaviour {
             float y = 5.0f;
             float z = 0.0f;
 
-            // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
-            GameObject newCube = Instantiate(spinCube, new Vector3(x, y, z), Quaternion.identity);
-            CubeScript cubeScript = newCube.GetComponent<CubeScript>();
-            cubeScript.SetScale(.45f * (1.0f - percentage));
-            cubeScript.rotateAroundSpeed = .2f + curveEaseOut * 4.0f;
+            Vector3 position = new Vector3(x, y, z);
+            float scale = .45f * (1.0f - percentage);
+            float rotateAroundSpeed = .2f + curveEaseOut * 4.0f;
+            createNewSpinCube(position, scale, rotateAroundSpeed);
         }
 	}
 	
 	void Update () {
 		
 	}
+
+    private void createCentralCube() {
+        Vector3 position = new Vector3(0, 5, 0);
+        float scale = 1.5f;
+        float rotateAroundSpeed = 1;
+        createNewSpinCube(position, scale, rotateAroundSpeed);
+    }
+
+    // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
+    private void createNewSpinCube(Vector3 position, float scale, float rotateAroundSpeed) {
+        GameObject newCube = Instantiate(spinCube, position, Quaternion.identity);
+        CubeScript cubeScript = newCube.GetComponent<CubeScript>();
+        cubeScript.SetScale(scale);
+        cubeScript.rotateAroundSpeed = rotateAroundSpeed;
+    }
 }
