@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Sketch : MonoBehaviour {
 
-    public GameObject spinCube;
-
     void Start() {
 
         createCentralCube();
@@ -51,9 +49,12 @@ public class Sketch : MonoBehaviour {
 
     // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
     private void createNewSpinCube(Vector3 position, float scale, float rotateAroundSpeed) {
-        GameObject newCube = Instantiate(spinCube, position, Quaternion.identity);
-        CubeScript cubeScript = newCube.GetComponent<CubeScript>();
-        cubeScript.SetScale(scale);
-        cubeScript.rotateAroundSpeed = rotateAroundSpeed;
+
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.position = position;
+        cube.transform.localScale = new Vector3(scale, scale, scale);
+
+        cube.AddComponent<CubeScript>();
+        cube.GetComponent<CubeScript>().rotateAroundSpeed = rotateAroundSpeed;
     }
 }
