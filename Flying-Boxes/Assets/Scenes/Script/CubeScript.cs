@@ -9,7 +9,6 @@ public class CubeScript : MonoBehaviour {
 
     Vector3 spinAxis = Vector3.up;
 
-	// Use this for initialization
 	void Start () {
 
         spinSpeed = new Vector3(Random.value, Random.value, Random.value);
@@ -18,7 +17,6 @@ public class CubeScript : MonoBehaviour {
         spinAxis.x = randomVal * .1f;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         
         this.transform.Rotate(spinSpeed);
@@ -27,6 +25,6 @@ public class CubeScript : MonoBehaviour {
 
     public void SetScale(float size) {
         
-        this.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+        this.transform.localScale = new Vector3(size, size, size);
     }
 }

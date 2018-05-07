@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{31C96402-590E-2CFF-03BD-CFB6DF8E2D9D}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/Script/Sketch.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/Script/CubeScript.cs">
     <Files>
-      <File FileName="Assets/Scenes/Script/Sketch.cs" Line="15" Column="20" />
+      <File FileName="Assets/Scenes/Script/Sketch.cs" Line="24" Column="28" />
+      <File FileName="Assets/Scenes/Script/CubeScript.cs" Line="30" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

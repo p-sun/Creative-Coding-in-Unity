@@ -8,18 +8,26 @@ public class Sketch : MonoBehaviour {
 
     void Start() {
 
-        for (int i = 0; i < 3; i++) {
+        int totalCubes = 8;
 
-            // Position
-            float x = 3.0f;
+        // The distance between the position of the first and last cube
+        int totalDistance = 5;
+
+        for (int i = 0; i < totalCubes; i++) {
+            
+            float percentage = i / (float)totalCubes; // increases as i increases
+            float inversePercentage = 1.0f - percentage; // decreases as i increases
+
+            // Positions
+            float x = percentage * totalDistance;
             float y = 5.0f;
             float z = 0.0f;
 
             // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
             GameObject newCube = Instantiate(spinCube, new Vector3(x, y, z), Quaternion.identity);
             CubeScript cubeScript = newCube.GetComponent<CubeScript>();
-            cubeScript.SetScale(3.0f);
-            cubeScript.rotateAroundSpeed = Random.value;
+            cubeScript.SetScale(inversePercentage);
+            cubeScript.rotateAroundSpeed = percentage;
         }
 	}
 	
