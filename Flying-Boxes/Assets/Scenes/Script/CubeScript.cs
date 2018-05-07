@@ -18,7 +18,9 @@ public class CubeScript : MonoBehaviour {
 	void Update () {
         
         this.transform.Rotate(spinSpeed);
+        this.transform.RotateAround(Vector3.zero, Vector3.up, 1.0f);
 	}
+
     public void SetScale(float size) {
         
         this.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
