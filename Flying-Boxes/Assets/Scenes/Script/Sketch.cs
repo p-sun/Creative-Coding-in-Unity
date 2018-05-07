@@ -8,12 +8,10 @@ public class Sketch : MonoBehaviour {
 
     void Start() {
 
-        int totalCubes = 8;
+        int totalCubes = 12;
 
         // The distance between the position of the first and last cube
-        float totalDistance = 2.5f;
-        // Start position of the first cube
-        float startXPosition = 2.0f;
+        float totalDistance = 2.9f;
 
         // SIN DISTRIBUTION
         for (int i = 0; i < totalCubes; i++)
@@ -27,15 +25,15 @@ public class Sketch : MonoBehaviour {
             float curveEaseOut = Mathf.Sin(percentage * Mathf.PI / 2);
 
             // Positions
-            float x = startXPosition + curveEaseOut * totalDistance;
+            float x = 1.8f + curveEaseOut * totalDistance;
             float y = 5.0f;
             float z = 0.0f;
 
             // Create a new cube, set its initial position, rotation, scale, and speed of rotation.
             GameObject newCube = Instantiate(spinCube, new Vector3(x, y, z), Quaternion.identity);
             CubeScript cubeScript = newCube.GetComponent<CubeScript>();
-            cubeScript.SetScale(1.0f - percentage);
-            cubeScript.rotateAroundSpeed = curveEaseOut;
+            cubeScript.SetScale(0.5f * (1.0f - percentage));
+            cubeScript.rotateAroundSpeed = .4f + curveEaseOut * 3.8f;
         }
 	}
 	
